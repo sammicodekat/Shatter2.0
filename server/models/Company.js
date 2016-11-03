@@ -1,11 +1,12 @@
 const mongoose = require('mongoose')
+
 const Schema = mongoose.Schema
 
-const groupSchema = new Schema({
+const companySchema = new Schema({
   name: { type: String, required: true },
-  users: [{ type: Schema.Types.ObjectId, ref: 'User' }]
+  employees: [{ type: Schema.Types.ObjectId, ref: 'Employee' }],
 })
 
-const Group = mongoose.model('Group', groupSchema)
+const Company = mongoose.model('Company', companySchema);
 
-module.exports = Group
+module.exports = Company;

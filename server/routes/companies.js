@@ -1,46 +1,52 @@
 const express = require('express')
+
 const router = express.Router()
 
-const Group = require('../models/Group')
+const Company = require('../models/Company')
 
 router.route('/')
   .get((req, res) => {
-    Group.find()
-      .then(groups => { res.send(groups) })
-      .catch(err => { res.status(400).send(err) })
+    Company.find()
+      .then((companies) => { res.send(companies) })
+      .catch((err) => { res.status(400).send(err) })
   })
   .post((req, res) => {
-    Group.create(req.body)
-      .then(group => { res.send(group) })
-      .catch(err => { res.status(400).send(err) })
+    Company.create(req.body)
+      .then((company) => { res.send(company) })
+      .catch((err) => { res.status(400).send(err) })
   })
 
 router.route('/:id')
   .get((req, res) => {
-    Group.findById(req.params.id)
-      .populate('users')
-      .then(group => res.send(group))
+    Company.findById(req.params.id)
+      .populate('employees')
+      .then(company => res.send(company))
       .catch(err => res.status(400).send(err))
-  }) 
+  })
+  .put((req, res) => {
+    Company.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true })
+   .then(newCompany => res.send(newCompany))
+   .catch(err => res.status(400).send(err))
+  })
+ .delete((req, res) => {
+   Company.findByIdAndRemove(req.params.id)
+   .then(() => {
+     res.send('removed!');
+   })
+   .catch(err => res.status(400).send(err))
+ });
 
-router.put('/:groupId/addUser/:userId', (req, res) => {
-  let { groupId, userId } = req.params;
-  Group.findById(groupId)
-    .then( group => {
-      group.users.push(userId)
-      return group.save()
+router.put('/:companyId/addReview/:employeeId', (req, res) => {
+  const { companyId, employeeId } = req.params;
+  Company.findById(companyId)
+    .then((company) => {
+      company.employees.push(employeeId)
+      return company.save()
     })
-    .then(savedGroup => {
-      res.send(savedGroup)
+    .then((savedCompany) => {
+      res.send(savedCompany)
     })
     .catch(err => res.status(400).send(err))
 })
 
 module.exports = router
-
-// router.route('/:id')
-//   .get((req, res) => {
-//     Group.findById(req.params.id)
-//       .then(group => res.send(group))
-//       .catch(err => res.status(400).send(err))
-//   })
