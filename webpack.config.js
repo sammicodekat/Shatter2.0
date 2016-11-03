@@ -6,6 +6,7 @@ module.exports = {
   devtool: 'inline-source-map',
   entry: [
     'webpack-hot-middleware/client?reload=true',
+    './src/css/style.sass',
     './src/index.js'
   ],
   output: {
@@ -14,9 +15,9 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin()
+    new webpack.NoErrorsPlugin()
   ],
 
 
@@ -29,7 +30,8 @@ module.exports = {
         query: {
           presets: ['es2015', 'react']
         }
-      }
+      },
+      { test: /(\.s[ca]ss)$/, loaders: ['style', 'css', 'sass'] }
     ]
   }
 }

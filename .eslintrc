@@ -3,6 +3,10 @@
   "parser": "babel-eslint",
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    no-underscore-dangle: ["error", { "allow": ["_owner", "_pet"] }]
+    no-underscore-dangle: ["error", { "allow": ["_owner", "_pet"] }],
+     semi: [
+      0,
+      "never"
+    ]
   }
 }
