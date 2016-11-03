@@ -1,33 +1,17 @@
-import React, { Component } from 'react'
-import SomeStore from '../stores/SomeStore'
+import React, { PropTypes } from 'react'
+import HomePage from './HomePage/HomePage'
+import ProfileForm from './ProfileForm/ProfileForm'
 
-export default class Layout extends Component {
-  constructor() {
-    super();
-    this.state = {
-      someKey: SomeStore.getAllStuff()
-    }
-    this._onChange = this._onChange.bind(this)
-  }
-
-   componentWillMount() {
-    SomeStore.startListening(this._onChange)
-  }
-
-  componentWillUnmount() {
-    SomeStore.stopListening(this._onChange)
-  }
-
-  _onChange() {
-    this.setState({
-      someKey: SomeStore.getAllStuff()
-    })
-  }
-
+class Layout extends React.Component {
   render() {
-
     return (
-      <h1>Sweet Mongoose / React Template Ready to Go</h1>
+      <div>
+        <h1>Sweet Mongoose / React Template Ready to Go</h1>
+        <HomePage />
+        {this.props.children}
+      </div>
     )
   }
 }
+
+export default Layout
