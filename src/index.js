@@ -3,13 +3,9 @@ import { render } from 'react-dom'
 import { Router, Route, browserHistory } from 'react-router'
 import Layout from './components/Layout'
 
-
-
 render(
-  <div className='container'>
-    <Router history = { browserHistory }>
-      <Route path = '/' component = { Layout }/>  
-    </Router>
-  </div>,
+  <Router history={browserHistory}>
+    <Route path="/" component={Layout} />
+  </Router>,
   document.getElementById('root')
 )

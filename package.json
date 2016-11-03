@@ -29,6 +29,7 @@
     "mongoose": "^4.6.4",
     "morgan": "^1.7.0",
     "node-sass": "^3.11.0",
+    "numeral": "^1.5.3",
     "react": "^15.3.2",
     "react-addons-pure-render-mixin": "^15.3.2",
     "react-dom": "^15.3.2",
