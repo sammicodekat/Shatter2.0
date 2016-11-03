@@ -1,8 +1,9 @@
 const express = require('express')
+
 const router = express.Router()
 
 // connect other routers here!
-router.use('/users', require('./users'))
-router.use('/groups', require('./groups'))
+router.use('/employees', require('./employees'))
+router.use('/companies', require('./companies'))
 
 module.exports = router
