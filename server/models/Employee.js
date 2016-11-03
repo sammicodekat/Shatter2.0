@@ -15,6 +15,7 @@ const employeeSchema = new mongoose.Schema({
   benefits: { type: Number, min: 0, max: 5 },
   careerOpportunities: { type: Number, min: 0, max: 5 },
   overall: { type: Number, min: 0, max: 5 },
+  review: { type: String },
   company: { type: mongoose.Schema.Types.ObjectId, ref: 'Company' },
 });
 
