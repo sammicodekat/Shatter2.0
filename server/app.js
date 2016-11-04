@@ -3,7 +3,7 @@
 
 // SET SERVER PORT
 const PORT = process.env.PORT || 8000
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/property-manager'
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/company-rating'
 
 // REQUIRES
 const path = require('path')
