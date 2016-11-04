@@ -10,13 +10,12 @@ import React, {PropTypes} from 'react'
 
 const ProfileForm = (props) => {
 
-  // submitForm() {
-  //   console.log('hello')
-  // }
+  const submitForm = () => {
+    console.log('hello')
+  }
 
   return(
     <div>
-      <h1>Profile Form</h1>
       <form>
         <label>Salary</label>
         <input type="number"/>
