@@ -1,23 +1,23 @@
 import * as types from './actionTypes'
-import {get, put, post} from axios
+import {get, put, post} from 'axios'
 
-// export function receivePrediciton(prediction) {
-//   return { type: types.RECEIVE_PREDICTION_SUCCESS, prediciton}
-// }
+export function receivePrediction(prediction) {
+  return { type: types.RECEIVE_PREDICTION_SUCCESS, prediciton}
+}
 
-// export function receiveCompanyFailed(error) {
-//   return { type: types.RECEIVE_PREDICITON_FAILED, error}
-// }
+export function receivePredictionFailed(error) {
+  return { type: types.RECEIVE_PREDICTION_FAILED, error}
+}
 
-// export function getCompany() {
-//   return dispatch => {
-//     get()
-//       .then(res => res.data)
-//       .then(company => {
-//         dispatch(receiveCompanies(company))
-//       })
-//       .catch(error => {
-//         dispatch(receiveCompaniesFailed(error))
-//       })
-//   }
-// }
+export function getPrediction() {
+  return dispatch => {
+    get()
+      .then(res => res.data)
+      .then(prediction => {
+        dispatch(receivePrediction(prediction))
+      })
+      .catch(error => {
+        dispatch(receivePredictionFailed(error))
+      })
+  }
+}
