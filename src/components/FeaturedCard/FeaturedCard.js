@@ -10,7 +10,7 @@ const renderFeaturedCard = company => (
   <div className="featuredCard" onClick={() => browserHistory.push(`/company/${company._id}`)}>
     <h1 className="companyName">{company.name}</h1>
     <div className="cardContent">
-      <div className="rating"><ScoreDial rating={company.rating} /></div>
+      <div className="rating"><ScoreDial rating={(company.overall * 20)} /></div>
       <div className="aspects">
         <ul>
           {company.benefitInfo.map(benefit => (
