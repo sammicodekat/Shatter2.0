@@ -88,4 +88,4 @@ const ProfileForm = ({profile, allRaces, allEducationLevels, onSave, onChange, l
   )
 }
 
-export default CourseForm
+export default ProfileForm

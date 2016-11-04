@@ -4,7 +4,7 @@ import SearchBar from '../SearchBar/SearchBar'
 import FeaturedList from '../FeaturedList/FeaturedList'
 
 import { connect } from 'react-redux'
-import * as shatterActions from '../../actions/shatterActions'
+// import * as companiesActions from '../../actions/companiesActions'
 import { bindActionCreators } from 'redux'
 
 class HomePage extends React.Component {

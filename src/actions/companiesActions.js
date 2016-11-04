@@ -1,8 +1,8 @@
 import * as types from './actionTypes'
 import {get, put, post} from axios
 
-// export function postNewReview(review) {
-//   return { type: types.SEND_NEW_REVIEW, review}
+// export function receiveCompanies(companies) {
+//   return { type: types.RECEIVE_COMPANIES_SUCCESS, companies}
 // }
 
 // export function receiveCompaniesFailed(error) {
@@ -11,10 +11,10 @@ import {get, put, post} from axios
 
 // export function getCompanies() {
 //   return dispatch => {
-//     post(`api/predict/${profileEntry.company}`, profileEntry)
+//     get('/api/companies')
 //       .then(res => res.data)
-//       .then(???? => {
-//         dispatch(receive?????(?????))
+//       .then(companies => {
+//         dispatch(receiveCompanies(companies))
 //       })
 //       .catch(error => {
 //         dispatch(receiveCompaniesFailed(error))
