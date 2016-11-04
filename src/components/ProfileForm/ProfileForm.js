@@ -5,7 +5,8 @@ import React from 'react'
 // import NumberInput from './NumberInput'
 
 
-const ProfileForm = ({profile, allRaces, allEducationLevels, onSave, onChange, loading, errors}) => {
+// const ProfileForm = ({profile, allRaces, allEducationLevels, onSave, onChange, loading, errors}) => {
+const ProfileForm = () => {
   return(
 <div>
       {/*<form>
@@ -108,7 +109,7 @@ const ProfileForm = ({profile, allRaces, allEducationLevels, onSave, onChange, l
       <input type="radial"/>
       <label>Race</label>
       <input type="text"/>
-      <button onClick={submitForm}></button>
+      <button>Submit</button>
     </form>
   </div>
   )
