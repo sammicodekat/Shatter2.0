@@ -1,10 +1,10 @@
 import * as types from '../actions/actionTypes'
 import initialState from './initialState'
 
-export default function reviewReducer(state = inititalState.review, action) {
+export default function companyReducer(state = inititalState.company, action) {
   switch(action.type) {
-    case types.LOAD_REVIEW_SUCCESS:
-      return action.review
+    case types.RECEIVE_COMPANY_SUCCESS:
+      return action.company
       default:
         return state
   }

@@ -1,13 +1,13 @@
 import React from 'react'
-import TextInput from './TextInput'
-import DropdownInput from './DropdownInput'
-import Checkbox from './Checkbox'
-import NumberInput from './NumberInput'
+// import TextInput from './TextInput'
+// import DropdownInput from './DropdownInput'
+// import Checkbox from './Checkbox'
+// import NumberInput from './NumberInput'
 
 const ProfileForm = ({profile, allRaces, allEducationLevels, onSave, onChange, loading, errors}) => {
   return(
     <form>
-      <TextInput
+      {/*<TextInput
         name="postiion"
         label="Position"
         value={profile.position}
@@ -78,13 +78,12 @@ const ProfileForm = ({profile, allRaces, allEducationLevels, onSave, onChange, l
         onChange={onChange}
         error={errors.hasKids}/>
 
-
       <input
         type="submit"
         disabled={loading}
         value={loading ? 'Saving...' : 'Save'}
         className="someBtnClassName"
-        onClick={onSave}/>
+        onClick={onSave}/>*/}
     </form>
   )
 }

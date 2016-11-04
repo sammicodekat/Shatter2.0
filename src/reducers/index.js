@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import reviews from './reviewReducer'
+import companies from './companiesReducer'
 
 const rootReducer = combineReducers({
-  reviews
+  companies
 })
 
 export default rootReducer
