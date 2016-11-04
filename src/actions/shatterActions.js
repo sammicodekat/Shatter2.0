@@ -6,10 +6,10 @@ import courseApi from '../api/mockCoursesApi'
 // }
 
 export function loadCoursesSuccess(course) {
-  return { type: types.CREATE_COURSE, course}
+  return { type: types.LOAD_COURSES_SUCCESS, course}
 }
 
-//This is likely and improper name - get with Sammi or Don
+//This is likely an improper name - get with Sammi or Don
 export function loadCompanies() {
   return function(dispatch) {
     return courseApi.getAllCourses().then(courses => {
