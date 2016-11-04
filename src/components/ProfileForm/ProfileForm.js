@@ -4,10 +4,13 @@ import React from 'react'
 // import Checkbox from './Checkbox'
 // import NumberInput from './NumberInput'
 
+
 const ProfileForm = ({profile, allRaces, allEducationLevels, onSave, onChange, loading, errors}) => {
   return(
-    <form>
-      {/*<TextInput
+<div>
+      {/*<form>
+
+        <TextInput
         name="postiion"
         label="Position"
         value={profile.position}
@@ -83,8 +86,31 @@ const ProfileForm = ({profile, allRaces, allEducationLevels, onSave, onChange, l
         disabled={loading}
         value={loading ? 'Saving...' : 'Save'}
         className="someBtnClassName"
-        onClick={onSave}/>*/}
+        onClick={onSave}/>
+
+      </form>*/}
+
+
+    <form>
+      <label>Salary</label>
+      <input type="number"/>
+      <label>Position</label>
+      <input type="text"/>
+      <label>Age</label>
+      <input type="number"/>
+      <label>Gender</label>
+      <input type="text"/>
+      <label>Marital Status</label>
+      <input type="text"/>
+      <label>Education</label>
+      <input type="text"/>
+      <label>Has Kids</label>
+      <input type="radial"/>
+      <label>Race</label>
+      <input type="text"/>
+      <button onClick={submitForm}></button>
     </form>
+  </div>
   )
 }
 

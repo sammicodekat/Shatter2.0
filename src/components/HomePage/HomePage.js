@@ -15,7 +15,9 @@ class HomePage extends React.Component {
   render() {
     return (
       <div className="homePage">
-        <SearchBar />
+        <div className="topContent">
+          <SearchBar />
+        </div>
         <div className="content">
           <FeaturedList />
         </div>
