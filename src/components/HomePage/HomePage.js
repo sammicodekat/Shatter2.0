@@ -18,7 +18,7 @@ class HomePage extends React.Component {
         <div className="topContent">
           <SearchBar />
         </div>
-        <div className="content">
+        <div className="pageContent">
           <FeaturedList />
         </div>
       </div>

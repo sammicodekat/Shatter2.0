@@ -6,11 +6,14 @@ import ScoreBar from '../ScoreBar/ScoreBar'
 import { connect } from 'react-redux'
 import { getPrediction } from '../../actions/predictionActions'
 import './businessPage.sass'
-import { Button, Modal } from 'semantic-ui-react'
+import { Button, Modal, Comment, Form, Header,Card } from 'semantic-ui-react'
 import { browserHistory } from 'react-router'
 import ProfileForm1 from '../ProfileForm/ProfileForm1'
+import JobList from './JobList'
+import MentorList from './MentorList'
 
 const renderCompany = (i,Prediction,open,close) => (
+<div>
   <div className="businessContainer">
     <div className="heading">
       <span className="logo"><img src={companyData[i].logo} alt=""/></span>
@@ -37,21 +40,85 @@ const renderCompany = (i,Prediction,open,close) => (
         ))}
       </ul>
     </div>
-
-    <div className="jobOpenings">
-    </div>
-    <Modal dimmer='blurring' open={open} onClose={close}>
-      <Modal.Header>Tell us about yourself</Modal.Header>
-      <Modal.Content>
-        <ProfileForm1 />
-      </Modal.Content>
-      <Modal.Actions>
-        <Button color='green' onClick={close}>
-          Go Back
-        </Button>
-      </Modal.Actions>
-    </Modal>
   </div>
+  <div className="reviewContainer">
+    <Comment.Group threaded>
+      <Header as='h3' dividing>Reviews</Header>
+      <Comment>
+        <Comment.Avatar as='a' src='http://365psd.com/images/premium/thumbs/236/woman-avatar-profile-picture-vector-icon-on-a-grey-background-1148000.jpg' />
+        <Comment.Content>
+          <Comment.Author as='a'>Anonymous</Comment.Author>
+          <Comment.Text>{companyData[i].reviews[0]}</Comment.Text>
+          <Comment.Actions>
+            <a>Reply</a>
+          </Comment.Actions>
+        </Comment.Content>
+      </Comment>
+
+      <Comment>
+        <Comment.Avatar as='a' src='http://365psd.com/images/premium/thumbs/236/woman-avatar-profile-picture-vector-icon-on-a-grey-background-1148000.jpg' />
+        <Comment.Content>
+          <Comment.Author as='a'>Anonymous</Comment.Author>
+          <Comment.Metadata>
+            <span>Yesterday at 12:30AM</span>
+          </Comment.Metadata>
+          <Comment.Text>
+            {companyData[i].reviews[1]}
+          </Comment.Text>
+          <Comment.Actions>
+            <a>Reply</a>
+          </Comment.Actions>
+        </Comment.Content>
+
+        <Comment.Group>
+          <Comment>
+            <Comment.Avatar as='a' src={companyData[i].logo} />
+            <Comment.Content>
+              <Comment.Author as='a'>Management Team</Comment.Author>
+              <Comment.Metadata>
+                <span>Just now</span>
+              </Comment.Metadata>
+              <Comment.Text>Elliot you are always so right :)</Comment.Text>
+              <Comment.Actions>
+                <a>Reply</a>
+              </Comment.Actions>
+            </Comment.Content>
+          </Comment>
+        </Comment.Group>
+      </Comment>
+      <Comment>
+        <Comment.Avatar as='a' src='http://365psd.com/images/premium/thumbs/236/woman-avatar-profile-picture-vector-icon-on-a-grey-background-1148000.jpg' />
+        <Comment.Content>
+          <Comment.Author as='a'>Anonymous</Comment.Author>
+          <Comment.Metadata>
+            <span>5 days ago</span>
+          </Comment.Metadata>
+          <Comment.Text>{companyData[i].reviews[2]}</Comment.Text>
+          <Comment.Actions>
+            <a>Reply</a>
+          </Comment.Actions>
+        </Comment.Content>
+      </Comment>
+    </Comment.Group>
+  </div>
+  <div className="job">
+    <JobList jobs={companyData[i].jobOpeningings} />
+  </div>
+  <div className="mentor">
+    <MentorList mentors={companyData[i].mentors} />
+  </div>
+  <Modal dimmer='blurring' open={open} onClose={close}>
+    <Modal.Header>Tell us about yourself</Modal.Header>
+    <Modal.Content>
+      <ProfileForm1 />
+    </Modal.Content>
+    <Modal.Actions>
+      <Button color='green' onClick={close}>
+        Go Back
+      </Button>
+    </Modal.Actions>
+  </Modal>
+</div>
 )
 
 class BusinessPage extends Component {
@@ -60,8 +127,8 @@ class BusinessPage extends Component {
     this.state={
       open:false
     }
-  this.show = this.show.bind(this);
-this.close = this.close.bind(this);
+    this.show = this.show.bind(this);
+    this.close = this.close.bind(this);
   }
   show(){
     this.setState({ open: true })
@@ -101,7 +168,7 @@ this.close = this.close.bind(this);
   </div>)
 }
 return(
-    renderCompany(this.props.params.id,Prediction,open,this.close)
+  renderCompany(this.props.params.id,Prediction,open,this.close)
 )
 }
 }

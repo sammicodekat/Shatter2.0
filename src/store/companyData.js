@@ -15,7 +15,8 @@ const companyData = [
     "overall": 4.8,
     "reviews":["People Focused Company that truly cares- excellent benefits, growth opportunities, and support.","I really love working for HPE, benefits are amazing and I love the discounts we can get. My typical day is spent answering emails from trading partners about their accounts, why files rejected, and why they can't log in. ","Strong peers who are driven and very focussed","Great people working there but they have gotten away from care of their employees. Due to all the many changes of late it has caused much tension among the employees. Seems the company is more focused on their selves than their employees. Hard pressed for advancements or raises. Used to be a good company to work for but not so much now."],
     "female-to-male-ratio":"45/55",
-    "companyName":"goodcompany"
+    "companyName":"goodcompany",
+    "mentors":[{"name":"Meg Whitman","title":"CEO","image":"//media.licdn.com/media/AAEAAQAAAAAAAAULAAAAJDhkYWYwNTc0LTE0NGYtNDMzNy04NmU4LTQzMDA5MTIzMzA1OA.jpg"},{"name":"Lisa-Marie Namphy","title":"Developer Advocate","image":"//media.licdn.com/mpr/mpr/shrinknp_400_400/p/2/000/0d1/2d1/3bfb723.jpg"},{"name":"Claudia Braga","title":"HPE Brazil Director","image":"//media.licdn.com/mpr/mpr/shrinknp_400_400/p/1/005/098/004/080bb10.jpg"}]
   },
   {
   "_id": 1,
