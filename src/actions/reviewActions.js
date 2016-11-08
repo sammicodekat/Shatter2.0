@@ -12,14 +12,14 @@ export function postReviewFailed(error) {
 export function postReview(review) {
   return dispatch => {
     if(review) {//had to put this if statement in because review is undefined
-      post(`api/predict/${review.company}`, review)
+      post(`api/predict/${review.company}`, review.user)
         .then(res => res.data)
         .then(someUnknownData => {
           dispatch(postNewReview(someUnknownData))
         })
         .catch(error => {
           dispatch(postReviewFailed(error))
-        }) 
+        })
     }
   }
 }

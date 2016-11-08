@@ -14,7 +14,8 @@ const companyData = [
     "careerOpportunities": 4.6,
     "overall": 4.8,
     "reviews":["People Focused Company that truly cares- excellent benefits, growth opportunities, and support.","I really love working for HPE, benefits are amazing and I love the discounts we can get. My typical day is spent answering emails from trading partners about their accounts, why files rejected, and why they can't log in. ","Strong peers who are driven and very focussed","Great people working there but they have gotten away from care of their employees. Due to all the many changes of late it has caused much tension among the employees. Seems the company is more focused on their selves than their employees. Hard pressed for advancements or raises. Used to be a good company to work for but not so much now."],
-    "female-to-male-ratio":"45/55"
+    "female-to-male-ratio":"45/55",
+    "companyName":"goodcompany"
   },
   {
   "_id": 1,
@@ -31,7 +32,8 @@ const companyData = [
   "careerOpportunities": 3.0,
   "overall": 3.2,
   "reviews": ["Working at Medium was okay. I didn't get paid but I didn't really have to do anything so I guess it all works out."],
-  "female-to-male-ratio":"4/35"
+  "female-to-male-ratio":"35/65",
+  "companyName":"averagecompany"
   },
   {
     "_id": 2,
@@ -48,7 +50,8 @@ const companyData = [
     "careerOpportunities": 2.6,
     "overall": 2.8,
     "reviews":["If you're a female, you get paid less. Period. If you're a female looking to get promoted, you work twice as hard as a male in the same position as you to get there. The only diversity that exists here is just enough to look good on paper. A toxic environment for women and people of color.","I've been in tech 20+ years and this is the worst bar none. Harassment is rampant, and men don't even bother to hide their bias and condescension for female engineers. I've worked in a fair few departments here, so problems appear company wide. HR does exactly nothing to remedy this, but spouts a lot of word-salad lip service. Some managers try to help, but they are generally stymied by the overall uncaring culture and process. Even pushing the misogyny aside, there is surprising amount of unethical behavior at Apple. People regularly either take credit for other's work or blame others (often completely unrelated) for not achieving goals (even if those goals were not based in reality at all). While there are definitely good people there, they just aren't in a position to do anything.","was a victim of sexual harassment, sexism and judged for my religious views (or lack thereof) by two male employees."],
-    "female-to-male-ratio":"15/85"
+    "female-to-male-ratio":"15/85",
+    "companyName":"badcompany"
   }
 ]
 

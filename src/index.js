@@ -16,7 +16,6 @@ store.dispatch(postReview())
 store.dispatch(getCompany())
 store.dispatch(getPrediction())
 
-
 render(
   <Provider store={ store }>
     <Router history={ browserHistory } routes={ routes } />

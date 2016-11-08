@@ -3,6 +3,8 @@ import uuid from 'uuid'
 import ScoreDial from '../ScoreDial/ScoreDial'
 import companyData from '../../store/companyData'
 import ScoreBar from '../ScoreBar/ScoreBar'
+import { connect } from 'react-redux'
+import { postReview } from '../../actions/reviewActions'
 
 import './businessPage.sass'
 
@@ -22,6 +24,14 @@ const renderCompany = (i) => (
         <ScoreBar title="Benefits" aspect={companyData[i].benefits} />
         <ScoreBar title="Career Opportunities" aspect={companyData[i].careerOpportunities} />
       </div>
+
+      <div className="yourStats">
+        Your predicted fit:<br/>
+        <div className="prediction">
+          <ScoreDial rating={70} />
+        </div>
+        Your predicted salary: {`$${60000}`}
+      </div>
     </div>
 
     <div className="infoSection">
@@ -40,11 +50,36 @@ const renderCompany = (i) => (
 )
 
 class BusinessPage extends Component {
+  constructor () {
+    super()
+    this.state = {
+      user: {}
+    }
+  }
+  componentDidMount () {
+    const companyName = companyData[this.props.params.id].companyName
+    const review = {
+      company: companyName,
+      user: this.state.user,
+    }
+    this.props.postReview(review)
+  }
+
   render () {
+
+
     return(
       renderCompany(this.props.params.id)
     )
   }
 }
 
-export default BusinessPage
+export default connect(
+  state => ({
+    user: state.user
+  }),
+  dispatch => ({
+    postReview(review) {
+      dispatch(postReview(review))
+    }
+  }))(BusinessPage)

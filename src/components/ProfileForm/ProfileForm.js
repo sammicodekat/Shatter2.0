@@ -1,9 +1,28 @@
 import React from 'react'
+import { browserHistory } from 'react-router'
 // import TextInput from './TextInput'
 // import DropdownInput from './DropdownInput'
 // import Checkbox from './Checkbox'
 // import NumberInput from './NumberInput'
 
+const handleForm = (e) => {
+  e.preventDefault()
+
+  const newFormData = {
+    salary: e.target.salary.value,
+    position: e.target.position.value,
+    age: e.target.age.value,
+    gender: e.target.gender.value,
+    marital_status: e.target.marital_status.value,
+    education: e.target.education.value,
+    hasKids: false,
+    race: e.target.race.value,
+  }
+
+  console.log('newFormData: ', newFormData)
+  
+  browserHistory.push('/')
+}
 
 // const ProfileForm = ({profile, allRaces, allEducationLevels, onSave, onChange, loading, errors}) => {
 const ProfileForm = () => {
@@ -91,24 +110,23 @@ const ProfileForm = () => {
 
       </form>*/}
 
-
-    <form>
+    <form onSubmit={e => handleForm(e)}>
       <label>Salary</label>
-      <input type="number"/>
+      <input id="salary" type="number"/>
       <label>Position</label>
-      <input type="text"/>
+      <input id="position" type="text"/>
       <label>Age</label>
-      <input type="number"/>
+      <input id="age" type="number"/>
       <label>Gender</label>
-      <input type="text"/>
+      <input id="gender" type="text"/>
       <label>Marital Status</label>
-      <input type="text"/>
+      <input id="marital_status" type="text"/>
       <label>Education</label>
-      <input type="text"/>
+      <input id="education" type="text"/>
       <label>Has Kids</label>
-      <input type="radial"/>
+      <input id="hasKids" type="radial"/>
       <label>Race</label>
-      <input type="text"/>
+      <input id="race" type="text"/>
       <button>Submit</button>
     </form>
   </div>

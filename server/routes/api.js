@@ -6,5 +6,6 @@ const router = express.Router()
 router.use('/employees', require('./employees'))
 router.use('/companies', require('./companies'))
 router.use('/predict', require('./predict'))
+router.use('/userInfo', require('./userInfo'))
 
 module.exports = router
