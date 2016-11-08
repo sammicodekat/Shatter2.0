@@ -102,9 +102,11 @@ const renderCompany = (i,Prediction,open,close) => (
     </Comment.Group>
   </div>
   <div className="job">
+    <h3>Featured Jobs</h3>
     <JobList jobs={companyData[i].jobOpeningings} />
   </div>
   <div className="mentor">
+    <h3>Featured Mentors</h3>
     <MentorList mentors={companyData[i].mentors} />
   </div>
   <Modal dimmer='blurring' open={open} onClose={close}>
