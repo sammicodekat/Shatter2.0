@@ -5,7 +5,6 @@ import companyData from '../../store/companyData'
 import ScoreBar from '../ScoreBar/ScoreBar'
 import { connect } from 'react-redux'
 import { postReview } from '../../actions/reviewActions'
-
 import './businessPage.sass'
 
 const renderCompany = (i) => (
@@ -58,16 +57,24 @@ class BusinessPage extends Component {
   }
   componentDidMount () {
     const companyName = companyData[this.props.params.id].companyName
+    let localStorageUser;
+    try {
+      let serializedData = localStorage.getItem('user');
+      if (!serializedData) throw new Error();
+      localStorageUser = JSON.parse(serializedData);
+    } catch (err) {
+      localStorageUser = undefined;
+    }
+
     const review = {
       company: companyName,
-      user: this.state.user,
+      user: localStorageUser,
     }
+  console.log(review);
     this.props.postReview(review)
   }
 
   render () {
-
-
     return(
       renderCompany(this.props.params.id)
     )

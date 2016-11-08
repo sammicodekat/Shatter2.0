@@ -29,5 +29,7 @@ router.route('/:id')
      })
      .catch(err => res.status(400).send(err))
    });
+router.route('/predict')
+  .get()
 
 module.exports = router

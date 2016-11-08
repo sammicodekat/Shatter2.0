@@ -1,136 +1,82 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
-// import TextInput from './TextInput'
-// import DropdownInput from './DropdownInput'
-// import Checkbox from './Checkbox'
-// import NumberInput from './NumberInput'
+import { Button, Checkbox, Form, Input, Message, Radio, Select, TextArea } from 'semantic-ui-react'
 
-const handleForm = (e) => {
-  e.preventDefault()
+const genders = [
+  { text: 'Male', value: 'male' },
+  { text: 'Female', value: 'female' },
+];
 
-  const newFormData = {
-    salary: e.target.salary.value,
-    position: e.target.position.value,
-    age: e.target.age.value,
-    gender: e.target.gender.value,
-    marital_status: e.target.marital_status.value,
-    education: e.target.education.value,
-    hasKids: false,
-    race: e.target.race.value,
-  }
+const positions = [
+  { text: 'Intern', value: 'Intern' },
+  { text: 'Junior-developer', value: 'Junior-developer' },
+  { text: 'Senior-developer', value: 'Senior-developer' },
+  { text: 'Lead-developer', value: 'Lead-developer' },
+  { text: 'Manager', value: 'Manager' },
+  { text: 'Exacutive', value: 'Exacutive' }
+];
 
-  console.log('newFormData: ', newFormData)
-  
-  browserHistory.push('/')
-}
+const racelist = [
+  { text: 'White', value: 'White' },
+  { text: 'Asian-Pac-Islander', value: 'Asian-Pac-Islander' },
+  { text: 'Amer-Indian-Eskimo', value: 'Amer-Indian-Eskimo' },
+  { text: 'African American', value: 'Black' },
+  { text: 'Other', value: 'Other' }
+];
 
-// const ProfileForm = ({profile, allRaces, allEducationLevels, onSave, onChange, loading, errors}) => {
+const educationlist = [
+  { text: 'Bachelors', value: 'Bachelors' },
+  { text: 'Some College', value: 'Some-college' },
+  { text: 'Hign School Grad', value: 'HS-grad' },
+  { text: 'Masters', value: 'Masters' },
+  { text: 'Doctorate', value: 'Doctorate' }
+];
+
+const kids = [
+  { text: 'Yes', value: true },
+  { text: 'No', value: false },
+];
+
+const status = [
+  { text: 'Married', value: 'married' },
+  { text: 'Single', value: 'single' },
+];
+
+let localStorageUser;
+try {
+  let serializedData = localStorage.getItem('user');
+  if (!serializedData) throw new Error();
+  localStorageUser = JSON.parse(serializedData);
+} catch (err) {
+  localStorageUser = undefined;
+};
+
 const ProfileForm = () => {
+  const handleSubmit = (e, serializedForm) => {
+    e.preventDefault();
+    serializedForm.hasKids=Boolean(serializedForm.hasKids);
+    let serializedData = JSON.stringify(serializedForm);
+    localStorage.setItem('user', serializedData);
+    browserHistory.push('/');
+  };
+  // let gender,position,race,education,hasKids,marital_status ="";
+  // if(localStorageUser!=undefined){
+    let { gender, position, race, education, hasKids, marital_status } = localStorageUser;
+  // }
   return(
-<div>
-      {/*<form>
-
-        <TextInput
-        name="postiion"
-        label="Position"
-        value={profile.position}
-        onChange={onChange}
-        error={errors.position}/>
-
-      <NumberInput
-        name="age"
-        label="Age"
-        min='13'
-        max='120'
-        value={profile.age}
-        onChange={onChange}
-        error={errors.age}/>
-
-      <NumberInput
-        name="salary"
-        label="Salary"
-        min='0'
-        max='10000000'
-        value={profile.age}
-        onChange={onChange}
-        error={errors.age}/>
-
-      <DropdownInput
-        name="education"
-        label="Education"
-        value={profile.educaiton}
-        defaultOption="Select Education Level"
-        options={allEducationLevels}
-        onChange={onChange}
-        error={errors.education}/>
-
-      <DropdownInput
-        name="race"
-        label="Race"
-        value={profile.race}
-        defaultOption="Select Author"
-        options={allRaces}
-        onChange={onChange}
-        error={errors.race}/>
-
-      <TextInput
-        name="marital_status"
-        label="Marital Status"
-        value={profile.marital_status}
-        onChange={onChange}
-        error={errors.marital_status}/>
-
-      <Checkbox
-        name="male"
-        label="Male"
-        value={profile.gender}
-        onChange={onChange}
-        error={errors.gender}/>
-
-      <Checkbox
-        name="female"
-        label="Female"
-        value={profile.gender}
-        onChange={onChange}
-        error={errors.gender}/>
-
-      <Checkbox
-        name="hasKids"
-        label="Have Kids"
-        value={profile.hasKids}
-        onChange={onChange}
-        error={errors.hasKids}/>
-
-      <input
-        type="submit"
-        disabled={loading}
-        value={loading ? 'Saving...' : 'Save'}
-        className="someBtnClassName"
-        onClick={onSave}/>
-
-      </form>*/}
-
-    <form onSubmit={e => handleForm(e)}>
-      <label>Salary</label>
-      <input id="salary" type="number"/>
-      <label>Position</label>
-      <input id="position" type="text"/>
-      <label>Age</label>
-      <input id="age" type="number"/>
-      <label>Gender</label>
-      <input id="gender" type="text"/>
-      <label>Marital Status</label>
-      <input id="marital_status" type="text"/>
-      <label>Education</label>
-      <input id="education" type="text"/>
-      <label>Has Kids</label>
-      <input id="hasKids" type="radial"/>
-      <label>Race</label>
-      <input id="race" type="text"/>
-      <button>Submit</button>
-    </form>
-  </div>
+    <Form onSubmit={handleSubmit}>
+      <Form.Group widths='equal'>
+        <Form.Select label='Gender' name='gender' options={genders} placeholder='Gender' defaultValue={gender}/>
+        <Form.Select label='Position' name='position' options={positions} placeholder='Position' defaultValue={position}/>
+        <Form.Select label='Race' name='race' options={racelist} placeholder='Race' defaultValue={race}/>
+      </Form.Group>
+      <Form.Group widths='equal'>
+        <Form.Select label='Education' name='education' options={educationlist} placeholder='Education' defaultValue={education}/>
+        <Form.Select label='Has Kids' name='hasKids' options={kids} placeholder='Yes' defaultValue={hasKids}/>
+        <Form.Select label='Marital Status' name='marital_status' options={status} placeholder='Marital Status' defaultValue={marital_status}/>
+      </Form.Group>
+      <Button primary type='submit'>Submit</Button>
+    </Form>
   )
 }
-
 export default ProfileForm

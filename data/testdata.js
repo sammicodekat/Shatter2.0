@@ -103,7 +103,7 @@
 ///fields
 
 {
-  fields: [
+  "fields": [
     {
       "name": "salary",
       "type": "NUMERIC"
@@ -162,3 +162,7 @@
     }
   ]
 }
+
+
+
+https://api.havenondemand.com/1/api/sync/predict/v2?json=[REPLACE]&model_name=goodcompanysalary&format=json&fields=%7B%0A++%22fields%22%3A+%5B%0A++++%7B%0A++++++%22name%22%3A+%22salary%22%2C%0A++++++%22type%22%3A+%22NUMERIC%22%0A++++%7D%2C%0A++++%7B%0A++++++%22name%22%3A+%22position%22%2C%0A++++++%22type%22%3A+%22STRING%22%0A++++%7D%2C%0A++++%7B%0A++++++%22name%22%3A+%22age%22%2C%0A++++++%22type%22%3A+%22NUMERIC%22%0A++++%7D%2C%0A++++%7B%0A++++++%22name%22%3A+%22gender%22%2C%0A++++++%22type%22%3A+%22STRING%22%0A++++%7D%2C%0A++++%7B%0A++++++%22name%22%3A+%22marital_status%22%2C%0A++++++%22type%22%3A+%22STRING%22%0A++++%7D%2C%0A++++%7B%0A++++++%22name%22%3A+%22education%22%2C%0A++++++%22type%22%3A+%22STRING%22%0A++++%7D%2C%0A++++%7B%0A++++++%22name%22%3A+%22hasKids%22%2C%0A++++++%22type%22%3A+%22STRING%22%0A++++%7D%2C%0A++++%7B%0A++++++%22name%22%3A+%22race%22%2C%0A++++++%22type%22%3A+%22STRING%22%0A++++%7D%2C%0A++++%7B%0A++++++%22name%22%3A+%22workLifeBalance%22%2C%0A++++++%22type%22%3A+%22NUMERIC%22%0A++++%7D%2C%0A++++%7B%0A++++++%22name%22%3A+%22cultureAndValues%22%2C%0A++++++%22type%22%3A+%22NUMERIC%22%0A++++%7D%2C%0A++++%7B%0A++++++%22name%22%3A+%22seniorLeadership%22%2C%0A++++++%22type%22%3A+%22NUMERIC%22%0A++++%7D%2C%0A++++%7B%0A++++++%22name%22%3A+%22benefits%22%2C%0A++++++%22type%22%3A+%22NUMERIC%22%0A++++%7D%2C%0A++++%7B%0A++++++%22name%22%3A+%22careerOpportunities%22%2C%0A++++++%22type%22%3A+%22NUMERIC%22%0A++++%7D%2C%0A++++%7B%0A++++++%22name%22%3A+%22overall%22%2C%0A++++++%22type%22%3A+%22NUMERIC%22%0A++++%7D%0A++%5D%0A%7D%0A&apikey=0271f576-4ae8-42bd-a1e1-8796e7321eaa

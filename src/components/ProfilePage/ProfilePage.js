@@ -10,7 +10,6 @@ class ProfilePage extends React.Component {
       <div className="profileFormContainer">
         <h1>Tell Us About Yourself</h1>
         <ProfileForm />
-        <button onClick={() => browserHistory.push('/')}>submit</button>
       </div>
     )
   }
