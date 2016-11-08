@@ -4,10 +4,13 @@ import ScoreDial from '../ScoreDial/ScoreDial'
 import companyData from '../../store/companyData'
 import ScoreBar from '../ScoreBar/ScoreBar'
 import { connect } from 'react-redux'
-import { postReview } from '../../actions/reviewActions'
+import { getPrediction } from '../../actions/predictionActions'
 import './businessPage.sass'
+import { Button, Modal } from 'semantic-ui-react'
+import { browserHistory } from 'react-router'
+import ProfileForm1 from '../ProfileForm/ProfileForm1'
 
-const renderCompany = (i) => (
+const renderCompany = (i,Prediction,open,close) => (
   <div className="businessContainer">
     <div className="heading">
       <span className="logo"><img src={companyData[i].logo} alt=""/></span>
@@ -21,20 +24,13 @@ const renderCompany = (i) => (
         <ScoreBar title="Culture and Values" aspect={companyData[i].cultureAndValues} />
         <ScoreBar title="Female Leadership" aspect={companyData[i].femaleLeadership} />
         <ScoreBar title="Benefits" aspect={companyData[i].benefits} />
-        <ScoreBar title="Career Opportunities" aspect={companyData[i].careerOpportunities} />
+        <ScoreBar title="Equal Opportunities for Women" aspect={companyData[i].careerOpportunities} />
       </div>
-
-      <div className="yourStats">
-        Your predicted fit:<br/>
-        <div className="prediction">
-          <ScoreDial rating={70} />
-        </div>
-        Your predicted salary: {`$${60000}`}
-      </div>
+      {Prediction}
     </div>
 
     <div className="infoSection">
-    <p>{companyData[i].companyInfo}</p>
+      <p>{companyData[i].companyInfo}</p>
       <ul>
         {companyData[i].benefitInfo.map(benefit => (
           <li key={uuid()}>{benefit}</li>
@@ -44,16 +40,35 @@ const renderCompany = (i) => (
 
     <div className="jobOpenings">
     </div>
-
+    <Modal dimmer='blurring' open={open} onClose={close}>
+      <Modal.Header>Tell us about yourself</Modal.Header>
+      <Modal.Content>
+        <ProfileForm1 />
+      </Modal.Content>
+      <Modal.Actions>
+        <Button color='green' onClick={close}>
+          Go Back
+        </Button>
+      </Modal.Actions>
+    </Modal>
   </div>
 )
 
 class BusinessPage extends Component {
   constructor () {
-    super()
-    this.state = {
-      user: {}
+    super();
+    this.state={
+      open:false
     }
+  this.show = this.show.bind(this);
+this.close = this.close.bind(this);
+  }
+  show(){
+    this.setState({ open: true })
+  }
+
+  close(){
+    this.setState({ open: false })
   }
   componentDidMount () {
     const companyName = companyData[this.props.params.id].companyName
@@ -65,28 +80,38 @@ class BusinessPage extends Component {
     } catch (err) {
       localStorageUser = undefined;
     }
-
-    const review = {
+    const info = {
       company: companyName,
       user: localStorageUser,
     }
-  console.log(review);
-    this.props.postReview(review)
+    this.props.getPrediction(info)
   }
 
   render () {
-    return(
-      renderCompany(this.props.params.id)
-    )
-  }
+    let { prediction } = this.props;
+    let { open } = this.state;
+    let Prediction =(<Button onClick={this.show}>See your fit</Button>);
+    if(prediction.overall){
+      Prediction = (<div className="yourStats">
+      Your predicted fit:<br/>
+    <div className="prediction">
+      <ScoreDial rating={prediction.overall} />
+    </div>
+    Your predicted salary: {prediction.salary}
+  </div>)
+}
+return(
+    renderCompany(this.props.params.id,Prediction,open,this.close)
+)
+}
 }
 
 export default connect(
   state => ({
-    user: state.user
+    prediction: state.prediction
   }),
   dispatch => ({
-    postReview(review) {
-      dispatch(postReview(review))
+    getPrediction(info) {
+      dispatch(getPrediction(info))
     }
   }))(BusinessPage)

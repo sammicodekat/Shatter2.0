@@ -9,9 +9,10 @@ export function receivePredictionFailed(error) {
   return { type: types.RECEIVE_PREDICTION_FAILED, error}
 }
 
-export function getPrediction() {
+export function getPrediction(info) {
   return dispatch => {
-    get()
+    if(info) {
+      post(`/api/predict/${info.company}`, info.user)
       .then(res => res.data)
       .then(prediction => {
         dispatch(receivePrediction(prediction))
@@ -19,5 +20,6 @@ export function getPrediction() {
       .catch(error => {
         dispatch(receivePredictionFailed(error))
       })
+    }
   }
 }

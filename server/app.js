@@ -45,8 +45,6 @@ app.use('/api', require('./routes/api'))
 
 app.get('*', (req, res) => {
   let filepath = path.resolve('build/index.html');
-  console.log('filepath: ', path.resolve(''));
-  // console.log('filepath: ', path.join(__dirname, '../build/index.html'))
   res.sendFile(filepath);
 });
 
