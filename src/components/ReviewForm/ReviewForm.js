@@ -1,5 +1,20 @@
-import React from 'react'
-import { Button, Checkbox, Form, Input, Message, Radio, Select, TextArea } from 'semantic-ui-react'
+import React, { Component } from 'react'
+import { browserHistory } from 'react-router'
+import { Button, Checkbox, Form, Input, Message, Radio, Select, TextArea, Icon, Step } from 'semantic-ui-react'
+const { Content, Description, Group, Title } = Step
+
+const steps = [
+  { icon: 'user', title: 'Find Your Match', description: 'Tell Us about yourself' },
+  { active: true, icon: 'write', title: 'Your Review', description: 'Your reviews are totally anonymous.' },
+  { disabled: true, icon: 'comment', title: 'Comment' },
+]
+
+const benefits = [
+  { text: 'Paid Maternity Leave', value: 'maternity' },
+  { text: 'Work From Home ', value: 'work-from-home' },
+  { text: 'Mentor Program', value: 'mentor' },
+  { text: 'Onsite ChildCare', value: 'childcare' },
+];
 
 const genders = [
   { text: 'Male', value: 'male' },
@@ -50,19 +65,29 @@ try {
   localStorageUser = undefined;
 };
 
-const ProfileForm = () => {
-  const handleSubmit = (e, serializedForm) => {
+export default class ProfileForm1 extends Component {
+  constructor(props){
+      super(props)
+      this.state = {mssg:false}
+      this.handleSubmit=this.handleSubmit.bind(this)
+    }
+  handleSubmit(e, serializedForm){
     e.preventDefault();
     serializedForm.hasKids=Boolean(serializedForm.hasKids);
     let serializedData = JSON.stringify(serializedForm);
     localStorage.setItem('user', serializedData);
-  };
-  // let gender,position,race,education,hasKids,marital_status ="";
-  // if(localStorageUser!=undefined){
+    this.setState({
+        mssg:true
+      })
+  }
+   render() {
+let {mssg} = this.state
     let { gender, position, race, education, hasKids, marital_status } = localStorageUser;
-  // }
+    let Mssg = mssg ? (<Message positive floating><Message.Header>Review Submitted</Message.Header></Message>) : (<Message floating><p>Your information is totally anonymous. We'll never use it in a way that might be used to identify you.</p> </Message>)
   return(
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={this.handleSubmit}>
+      {Mssg}
+      <Group items={steps} />
       <Form.Group widths='equal'>
         <Form.Select label='Gender' name='gender' options={genders} placeholder='Gender' defaultValue={gender}/>
         <Form.Select label='Position' name='position' options={positions} placeholder='Position' defaultValue={position}/>
@@ -73,8 +98,8 @@ const ProfileForm = () => {
         <Form.Select label='Has Kids' name='hasKids' options={kids} placeholder='Yes' defaultValue={hasKids}/>
         <Form.Select label='Marital Status' name='marital_status' options={status} placeholder='Marital Status' defaultValue={marital_status}/>
       </Form.Group>
-      <Button primary type='submit'>Submit</Button>
+      <Button primary type='submit'>Next</Button>
     </Form>
   )
 }
-export default ProfileForm
+}

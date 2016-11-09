@@ -8,6 +8,7 @@ import './businessPage.sass'
 import { Button, Modal, Comment, Form, Header, Card, Label, Progress } from 'semantic-ui-react'
 import { browserHistory } from 'react-router'
 import ProfileForm1 from '../ProfileForm/ProfileForm1'
+import ReviewForm from '../ReviewForm/ReviewForm'
 import JobList from './JobList'
 import MentorList from './MentorList'
 const colors = [
@@ -15,7 +16,7 @@ const colors = [
   'blue', 'violet', 'purple', 'pink'
 ]
 
-const renderCompany = (i,Prediction,open,close) => (
+const renderCompany = (i,Prediction,open,close,show,open2) => (
 <div>
   <div className="businessContainer">
     <div className="heading">
@@ -23,7 +24,7 @@ const renderCompany = (i,Prediction,open,close) => (
       <h1>{companyData[i].name}</h1>
       <div className="addreview">
         <Button.Group className='buttons'>
-          <Button label={{ content: Math.floor(companyData[i].overall * 180) }} icon='write' color='blue' content='Review  ' labelPosition='left' />
+          <Button label={{ content: Math.floor(companyData[i].overall * 180) }} icon='write' color='blue' content='Review  ' labelPosition='left' onClick={show} />
         </Button.Group>
       </div>
     </div>
@@ -117,6 +118,17 @@ const renderCompany = (i,Prediction,open,close) => (
     <h3>Featured Mentors</h3>
     <MentorList mentors={companyData[i].mentors} />
   </div>
+  <Modal dimmer='blurring' open={open2} onClose={close}>
+    <Modal.Header>Review</Modal.Header>
+    <Modal.Content>
+      <ReviewForm />
+    </Modal.Content>
+    <Modal.Actions>
+      <Button color='green' onClick={close}>
+        Go Back
+      </Button>
+    </Modal.Actions>
+  </Modal>
   <Modal dimmer='blurring' open={open} onClose={close}>
     <Modal.Header>Tell us about yourself</Modal.Header>
     <Modal.Content>
@@ -135,17 +147,22 @@ class BusinessPage extends Component {
   constructor () {
     super();
     this.state={
-      open:false
+      open:false,
+      open2:false
     }
     this.show = this.show.bind(this);
+    this.show2 = this.show2.bind(this);
     this.close = this.close.bind(this);
   }
   show(){
     this.setState({ open: true })
   }
+show2(){
+  this.setState({ open2: true })
+}
 
   close(){
-    this.setState({ open: false })
+    this.setState({ open: false,open2: false })
   }
   componentDidMount () {
     const companyName = companyData[this.props.params.id].companyName
@@ -166,19 +183,19 @@ class BusinessPage extends Component {
 
   render () {
     let { prediction } = this.props;
-    let { open } = this.state;
+    let { open, open2 } = this.state;
     let Prediction =(<Button onClick={this.show}>See your fit</Button>);
     if(prediction.overall){
       Prediction = (<div className="yourStats">
-      Your predicted fit:<br/>
-    <div className="prediction">
-      <ScoreDial rating={prediction.overall} />
-    </div>
-    Your predicted salary: {prediction.salary}
-  </div>)
+        Your predicted fit:<br/>
+        <div className="prediction">
+          <ScoreDial rating={prediction.overall} />
+        </div>
+        Your predicted salary: {prediction.salary}
+      </div>)
 }
 return(
-  renderCompany(this.props.params.id,Prediction,open,this.close)
+  renderCompany(this.props.params.id,Prediction,open,this.close,this.show2,open2)
 )
 }
 }
