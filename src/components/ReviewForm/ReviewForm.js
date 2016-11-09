@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
-import { Button, Checkbox, Form, Input, Message, Radio, Select, TextArea, Icon, Step } from 'semantic-ui-react'
+import { Button, Checkbox, Form, Input, Message, Radio, Select, TextArea, Step, Rating } from 'semantic-ui-react'
 const { Content, Description, Group, Title } = Step
 
 const steps = [
@@ -65,7 +65,7 @@ try {
   localStorageUser = undefined;
 };
 
-export default class ProfileForm1 extends Component {
+export default class ReviewForm extends Component {
   constructor(props){
       super(props)
       this.state = {mssg:false}
@@ -83,22 +83,32 @@ export default class ProfileForm1 extends Component {
    render() {
 let {mssg} = this.state
     let { gender, position, race, education, hasKids, marital_status } = localStorageUser;
-    let Mssg = mssg ? (<Message positive floating><Message.Header>Review Submitted</Message.Header></Message>) : (<Message floating><p>Your information is totally anonymous. We'll never use it in a way that might be used to identify you.</p> </Message>)
+    let Mssg = mssg ? (<Message positive floating><Message.Header>Review Submitted</Message.Header></Message>) : (<Group items={steps} />)
   return(
     <Form onSubmit={this.handleSubmit}>
       {Mssg}
-      <Group items={steps} />
       <Form.Group widths='equal'>
-        <Form.Select label='Gender' name='gender' options={genders} placeholder='Gender' defaultValue={gender}/>
-        <Form.Select label='Position' name='position' options={positions} placeholder='Position' defaultValue={position}/>
-        <Form.Select label='Race' name='race' options={racelist} placeholder='Race' defaultValue={race}/>
+        <Form.Select label='Current Position' name='position' options={positions} placeholder='Position' defaultValue={position}/>
+        <Form.Select label='Company Benefits' name='benefits' options={benefits} placeholder='Search...' search multiple/>
       </Form.Group>
-      <Form.Group widths='equal'>
-        <Form.Select label='Education' name='education' options={educationlist} placeholder='Education' defaultValue={education}/>
-        <Form.Select label='Has Kids' name='hasKids' options={kids} placeholder='Yes' defaultValue={hasKids}/>
-        <Form.Select label='Marital Status' name='marital_status' options={status} placeholder='Marital Status' defaultValue={marital_status}/>
+      <h5>Culture and Environment</h5>
+      <Form.Group inline >
+        <Form.Checkbox label='Unconscious bias training' name='programs' value='training' />
+        <Form.Checkbox label='Diversity initiatives ' name='programs' value='diversity-initiative' />
+        <Form.Checkbox label='Executive coaching' name='programs' value='executive-coaching' />
       </Form.Group>
-      <Button primary type='submit'>Next</Button>
+      <h5>Ratings</h5>
+      <p>Equal Opportunities for Men and Women</p>
+      <Rating icon ="star" maxRating={10} name="support"/>
+      <p>People you work with</p>
+      <Rating icon ="star" maxRating={10} name="safety"/>
+      <p>Female Representation in Top Leadership</p>
+      <Rating icon ="star" maxRating={10} name="advancement"/>
+      <p>Flexibility</p>
+      <Rating icon ="star" maxRating={10} name="pto"/>
+      <div className='center'>
+        <Button primary type='submit' icon="right arrow" labelPosition='right'>Next</Button>
+      </div>
     </Form>
   )
 }
