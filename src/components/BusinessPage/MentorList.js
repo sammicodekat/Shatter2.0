@@ -1,9 +1,9 @@
 import React from 'react'
-import { List,Item, Image, Label, Icon, Card,Grid,Button,Modal } from 'semantic-ui-react'
+import { List,Item, Image, Label, Icon, Card, Grid, Button, Modal, Rating } from 'semantic-ui-react'
 
 const renderMentorList = mentors => (
   mentors.map((mentor,i) => (
-    <Card key ={i} >
+    <Card key ={i} label={{ as: 'a', corner: 'right', icon: 'heart', color:'red' }} className='center'>
       <Image src={mentor.image} size='medium' className='img'/>
       <Card.Content>
         <Card.Header>
@@ -11,6 +11,9 @@ const renderMentorList = mentors => (
         </Card.Header>
         <Card.Meta>
           {mentor.title}
+        </Card.Meta>
+        <Card.Meta>
+          <Rating icon='star' defaultRating={5} maxRating={5} />
         </Card.Meta>
       </Card.Content>
       <Card.Content extra>

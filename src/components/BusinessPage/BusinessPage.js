@@ -2,15 +2,18 @@ import React, { Component } from 'react'
 import uuid from 'uuid'
 import ScoreDial from '../ScoreDial/ScoreDial'
 import companyData from '../../store/companyData'
-import ScoreBar from '../ScoreBar/ScoreBar'
 import { connect } from 'react-redux'
 import { getPrediction } from '../../actions/predictionActions'
 import './businessPage.sass'
-import { Button, Modal, Comment, Form, Header,Card } from 'semantic-ui-react'
+import { Button, Modal, Comment, Form, Header, Card, Label, Progress } from 'semantic-ui-react'
 import { browserHistory } from 'react-router'
 import ProfileForm1 from '../ProfileForm/ProfileForm1'
 import JobList from './JobList'
 import MentorList from './MentorList'
+const colors = [
+  'red', 'orange', 'yellow', 'olive', 'green', 'teal',
+  'blue', 'violet', 'purple', 'pink'
+]
 
 const renderCompany = (i,Prediction,open,close) => (
 <div>
@@ -18,27 +21,32 @@ const renderCompany = (i,Prediction,open,close) => (
     <div className="heading">
       <span className="logo"><img src={companyData[i].logo} alt=""/></span>
       <h1>{companyData[i].name}</h1>
+      <div className="addreview">
+        <Button.Group className='buttons'>
+          <Button label={{ content: Math.floor(companyData[i].overall * 180) }} icon='write' color='blue' content='Review  ' labelPosition='left' />
+        </Button.Group>
+      </div>
     </div>
 
     <div className="reviewContent">
       <div className="rating"><ScoreDial rating={(companyData[i].overall * 20)} /></div>
       <div className="scoreBars">
-        <ScoreBar title="Work Life Balance" aspect={companyData[i].workLifeBalance} />
-        <ScoreBar title="Culture and Values" aspect={companyData[i].cultureAndValues} />
-        <ScoreBar title="Female Leadership" aspect={companyData[i].femaleLeadership} />
-        <ScoreBar title="Benefits" aspect={companyData[i].benefits} />
-        <ScoreBar title="Equal Opportunities for Women" aspect={companyData[i].careerOpportunities} />
+        <Progress percent={companyData[i].workLifeBalance * 20} color='blue' progress active>Work Life Balance</Progress>
+        <Progress percent={companyData[i].cultureAndValues * 20} color='blue' progress active>Culture and Values</Progress>
+        <Progress percent={companyData[i].femaleLeadership * 20} color='blue' progress active>Female Leadership</Progress>
+        <Progress percent={companyData[i].benefits * 20} color='blue' progress active>Benefits</Progress>
+        <Progress percent={companyData[i].careerOpportunities * 20} color='blue' progress active>Equal Opportunities for Women</Progress>
       </div>
       {Prediction}
     </div>
 
     <div className="infoSection">
+      <h3>About</h3>
       <p>{companyData[i].companyInfo}</p>
-      <ul>
-        {companyData[i].benefitInfo.map(benefit => (
-          <li key={uuid()}>{benefit}</li>
-        ))}
-      </ul>
+      <h3>Benefits</h3>
+      {companyData[i].benefitInfo.map((benefit,i) => (
+        <Label as='a' color={colors[i]} tag key={i}>{benefit}</Label>
+      ))}
     </div>
   </div>
   <div className="reviewContainer">
