@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import {browserHistory} from 'react-router'
+import {connect} from 'react-redux'
+import {getPrediction} from '../../actions/predictionActions'
 import {
     Button,
     Checkbox,
@@ -101,20 +103,9 @@ const status = [
     }
 ];
 
-let localStorageUser;
-try {
-    let serializedData = localStorage.getItem('user');
-    if (!serializedData)
-        throw new Error();
-    localStorageUser = JSON.parse(serializedData);
-    console.log("localStorageUser", localStorageUser)
-} catch (err) {
-    localStorageUser = undefined;
-};
-
 export default class ProfileForm1 extends Component {
-    constructor(props) {
-        super(props)
+    constructor() {
+        super()
         this.state = {
             mssg: false
         }
@@ -135,7 +126,6 @@ export default class ProfileForm1 extends Component {
             education,
             hasKids,
             marital_status = "";
-        console.log("localStorageUser", localStorageUser);
         let Mssg = mssg
             ? (
                 <Message positive floating>
@@ -145,7 +135,7 @@ export default class ProfileForm1 extends Component {
             )
             : (
                 <Message floating>
-                    <p>Your information is totally anonymous. We'll never use it in a way that might be used to identify you.</p>
+                  <p>Your information is totally anonymous. We'll never use it in a way that might be used to identify you.</p>
                 </Message>
             )
         return (

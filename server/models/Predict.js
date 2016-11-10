@@ -30,7 +30,11 @@ const Predict = {
     let arr = {};
     axios.get(salaryPredictUrl)
       .then((res1) => {
-        arr.salary = res1.data.dataset[0].prediction;
+        let sal = Math.floor(res1.data.dataset[0].prediction);
+        let str=sal.toString();
+        let num2=str.slice(-3);
+        let num1=str.slice(0,str.length-3);
+        arr.salary =`${num1},${num2}`
         return axios.get(overallPredictUrl)
       })
       .then((res2) => {
