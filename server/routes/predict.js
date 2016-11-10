@@ -5,6 +5,7 @@ const router = express.Router()
 const Predict = require('../models/Predict')
 
 router.use((req,res,next) => {
+  console.log("res",res)
   res.handle = (err,data) => res.status( err ? 400 :200).send(err || data)
   next()
 })

@@ -2,7 +2,7 @@ import * as types from './actionTypes'
 import {get, put, post} from 'axios'
 
 export function receivePrediction(prediction) {
-    return {type: types.RECEIVE_PREDICTION_SUCCESS, prediciton}
+    return {type: types.RECEIVE_PREDICTION_SUCCESS, payload: prediction}
 }
 
 export function receivePredictionFailed(error) {

@@ -137,15 +137,6 @@ const status = [
     }
 ];
 
-let localStorageUser;
-try {
-    let serializedData = localStorage.getItem('user');
-    if (!serializedData)
-        throw new Error();
-    localStorageUser = JSON.parse(serializedData);
-} catch (err) {
-    localStorageUser = undefined;
-};
 
 export default class ReviewForm extends Component {
     constructor(props) {
@@ -157,21 +148,10 @@ export default class ReviewForm extends Component {
     }
     handleSubmit(e, serializedForm) {
         e.preventDefault();
-        serializedForm.hasKids = Boolean(serializedForm.hasKids);
-        let serializedData = JSON.stringify(serializedForm);
-        localStorage.setItem('user', serializedData);
         this.setState({mssg: true})
     }
     render() {
         let {mssg} = this.state
-        let {
-            gender,
-            position,
-            race,
-            education,
-            hasKids,
-            marital_status
-        } = localStorageUser;
         let Mssg = mssg
             ? (
                 <Message positive floating>
@@ -181,28 +161,28 @@ export default class ReviewForm extends Component {
             : (<Group items={steps}/>)
         return (
             <Form onSubmit={this.handleSubmit}>
-                {Mssg}
-                <Form.Group widths='equal'>
-                    <Form.Select label='Current Position' name='position' options={positions} placeholder='Position' defaultValue={position}/>
-                    <Form.Select label='Company Benefits' name='benefits' options={benefits} placeholder='Search...' search multiple/>
-                </Form.Group>
-                <h5>Culture and Environment</h5>
-                <Form.Group inline>
-                    <Form.Checkbox label='Unconscious bias training' name='programs' value='training'/>
-                    <Form.Checkbox label='Diversity initiatives ' name='programs' value='diversity-initiative'/>
-                    <Form.Checkbox label='Executive coaching' name='programs' value='executive-coaching'/>
-                </Form.Group>
-                <h5>Ratings</h5>
-                <p>Equal Opportunities for Men and Women</p>
-                <Rating icon="star" maxRating={10} name="support"/>
-                <p>People you work with</p>
-                <Rating icon="star" maxRating={10} name="safety"/>
-                <p>Female Representation in Top Leadership</p>
-                <Rating icon="star" maxRating={10} name="advancement"/>
-                <p>Flexibility</p>
-                <Rating icon="star" maxRating={10} name="pto"/>
-                <div className='center'>
-                    <Button primary type='submit' icon="right arrow" labelPosition='right'>Next</Button>
+              {Mssg}
+              <Form.Group widths='equal'>
+                <Form.Select label='Current Position' name='position' options={positions} placeholder='Position' />
+                <Form.Select label='Company Benefits' name='benefits' options={benefits} placeholder='Search...' search multiple/>
+              </Form.Group>
+              <h5>Culture and Environment</h5>
+              <Form.Group inline>
+                <Form.Checkbox label='Unconscious bias training' name='programs' value='training'/>
+                <Form.Checkbox label='Diversity initiatives ' name='programs' value='diversity-initiative'/>
+                <Form.Checkbox label='Executive coaching' name='programs' value='executive-coaching'/>
+              </Form.Group>
+              <h5>Ratings</h5>
+              <p>Equal Opportunities for Men and Women</p>
+              <Rating icon="star" maxRating={10} name="support"/>
+              <p>People you work with</p>
+              <Rating icon="star" maxRating={10} name="safety"/>
+              <p>Female Representation in Top Leadership</p>
+              <Rating icon="star" maxRating={10} name="advancement"/>
+              <p>Flexibility</p>
+              <Rating icon="star" maxRating={10} name="pto"/>
+              <div className='center'>
+                <Button primary type='submit' labelPosition='right'>Next</Button>
                 </div>
             </Form>
         )

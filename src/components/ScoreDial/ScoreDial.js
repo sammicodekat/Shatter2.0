@@ -4,7 +4,7 @@ import './scoreDial.sass'
 
 const ScoreDial = rating => (
   <div>
-    <CircularProgressbar percentage={rating.rating} strokeWidth={12} initialAnimation={true} textForPercentage={(pct) => `${pct}`} />
+    <CircularProgressbar percentage={rating.rating} strokeWidth={12} initialAnimation={true} textForPercentage={(pct) => `Overall: ${pct}`}/>
   </div>
 )
 

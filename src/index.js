@@ -10,11 +10,12 @@ import {getCompany} from './actions/companyActions'
 import {getPrediction} from './actions/predictionActions'
 import {postReview} from './actions/reviewActions'
 
-const store = configureStore()
-store.dispatch(getCompanies())
-store.dispatch(postReview())
-store.dispatch(getCompany())
-store.dispatch(getPrediction())
+const store = configureStore();
+// store.dispatch(getCompanies())
+
+// store.dispatch(postReview())
+// store.dispatch(getCompany())
+// store.dispatch(getPrediction())
 
 
 render(

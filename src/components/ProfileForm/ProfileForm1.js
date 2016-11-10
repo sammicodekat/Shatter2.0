@@ -26,13 +26,13 @@ const positions = [
         text: 'Intern',
         value: 'Intern'
     }, {
-        text: 'Junior-developer',
-        value: 'Junior-developer'
+        text: 'Junior Developer',
+        value: 'Junior Developer'
     }, {
-        text: 'Senior-developer',
+        text: 'Senior Developer',
         value: 'Senior-developer'
     }, {
-        text: 'Lead-developer',
+        text: 'Lead Developer',
         value: 'Lead-developer'
     }, {
         text: 'Manager',
@@ -48,7 +48,7 @@ const racelist = [
         text: 'White',
         value: 'White'
     }, {
-        text: 'Asian-Pac-Islander',
+        text: 'Asian/Pacific Islander',
         value: 'Asian-Pac-Islander'
     }, {
         text: 'Amer-Indian-Eskimo',
@@ -136,16 +136,6 @@ export default class ProfileForm1 extends Component {
             hasKids,
             marital_status = "";
         console.log("localStorageUser", localStorageUser);
-        if (localStorageUser != undefined) {
-            let {
-                gender,
-                position,
-                race,
-                education,
-                hasKids,
-                marital_status
-            } = localStorageUser;
-        }
         let Mssg = mssg
             ? (
                 <Message positive floating>
@@ -160,17 +150,17 @@ export default class ProfileForm1 extends Component {
             )
         return (
             <Form onSubmit={this.handleSubmit}>
-                {Mssg}
-                <Form.Group widths='equal'>
-                    <Form.Select label='Gender' name='gender' options={genders} placeholder='Gender' defaultValue={gender}/>
-                    <Form.Select label='Position' name='position' options={positions} placeholder='Position' defaultValue={position}/>
-                    <Form.Select label='Race' name='race' options={racelist} placeholder='Race' defaultValue={race}/>
-                </Form.Group>
-                <Form.Group widths='equal'>
-                    <Form.Select label='Education' name='education' options={educationlist} placeholder='Education' defaultValue={education}/>
-                    <Form.Select label='Has Kids' name='hasKids' options={kids} placeholder='Yes' defaultValue={hasKids}/>
-                    <Form.Select label='Marital Status' name='marital_status' options={status} placeholder='Marital Status' defaultValue={marital_status}/>
-                </Form.Group>
+              {Mssg}
+              <Form.Group widths='equal'>
+                <Form.Select label='Gender' name='gender' options={genders} placeholder='Gender' />
+                <Form.Select label='Position' name='position' options={positions} placeholder='Position' />
+                <Form.Select label='Race' name='race' options={racelist} placeholder='Race' />
+              </Form.Group>
+              <Form.Group widths='equal'>
+                <Form.Select label='Education' name='education' options={educationlist} placeholder='Education' />
+                <Form.Select label='Has Kids' name='hasKids' options={kids} placeholder='Yes' />
+                <Form.Select label='Marital Status' name='marital_status' options={status} placeholder='Marital Status' />
+              </Form.Group>
                 <Button primary type='submit'>Submit</Button>
             </Form>
         )
