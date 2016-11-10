@@ -181,9 +181,7 @@ export default class ReviewForm extends Component {
               <Rating icon="star" maxRating={10} name="advancement"/>
               <p>Flexibility</p>
               <Rating icon="star" maxRating={10} name="pto"/>
-              <div className='center'>
-                <Button primary type='submit' labelPosition='right'>Next</Button>
-                </div>
+              <Button primary type='submit' labelPosition='right'>Next</Button>
             </Form>
         )
     }

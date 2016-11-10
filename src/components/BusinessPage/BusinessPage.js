@@ -299,8 +299,12 @@ class BusinessPage extends Component {
             }
         } else {
             Prediction = (
-                <Segment>
-                    <Button onClick={this.show}>See your fit</Button>
+                <Segment className="yourStats" raised>
+                  <div className='question'>
+                    <h4>How well will you fit?</h4>
+                    <h4>How much will you make?</h4>
+                    <Button onClick={this.show} color='blue'>See My Fit</Button>
+                  </div>
                 </Segment>
             )
         };
