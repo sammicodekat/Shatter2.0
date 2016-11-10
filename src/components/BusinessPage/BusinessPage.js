@@ -211,7 +211,7 @@ class BusinessPage extends Component {
     }
 
     close() {
-        this.setState({open: false, open2: false})
+        this.setState({open: false, open2: false,userInfo:true,loader:true})
         const companyName = companyData[this.props.params.id].companyName
         const info = {
             company: companyName,
