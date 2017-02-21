@@ -12,11 +12,13 @@ It will predict users' overall experiences and salaries at the companies they sp
 * Recommend matching jobs for potential job seekers (In Progress)
 * Match mentors and entry-level employee within the company (In Progress)
 ![1](https://dl2.pushbulletusercontent.com/tvsAZf8ELxZWyajvuHieCPcmCazGA6X7/Screen%20Shot%202017-02-21%20at%201.52.06%20AM.png)
-##Built With
+
+## Built With
 * MongoDB
 * React/Redux
 * Express
 * Node.js
 * HPE Prediction API
+
 ## [Live Demo](https://floating-garden-88489.herokuapp.com/)
 
