@@ -7,9 +7,16 @@ It will predict users' overall experiences and salaries at the companies they sp
 * Salary and Overall Experience Prediction
 * Female worker centered company statistics and reviews. Companies are ranked accordance to these factors. 
 ![1](https://dl2.pushbulletusercontent.com/zG2KxbN5ojNYcrM9PkoKSJ2LEF1fOZMr/Screen%20Shot%202017-02-21%20at%201.51.48%20AM.png)
-* Real time reviews and feedback from the employer (Future feature)
+* Real time reviews and feedback from the employer (In Progress)
 ![1](https://dl2.pushbulletusercontent.com/8Asveo6MEei2l5WxBQCxlue3eg6RU8JA/Screen%20Shot%202017-02-21%20at%201.53.00%20AM.png)
-* Recommend matching jobs for potential job seekers (Future feature)
-* Match mentors and entry-level employee within the company (Future feature)
+* Recommend matching jobs for potential job seekers (In Progress)
+* Match mentors and entry-level employee within the company (In Progress)
 ![1](https://dl2.pushbulletusercontent.com/tvsAZf8ELxZWyajvuHieCPcmCazGA6X7/Screen%20Shot%202017-02-21%20at%201.52.06%20AM.png)
+## Built with
+* MongoDB
+* React/Redux
+* Express
+* Node.js
+* HPE Prediction API
+## [Live Demo](https://floating-garden-88489.herokuapp.com/)
 
