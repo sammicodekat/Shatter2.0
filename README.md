@@ -3,7 +3,7 @@
 ##Description
 Shatter allows potential job seekers to find and rate companies that are female friendly workspaces. 
 It will predict users' overall experiences and salaries at the companies they specify, as well as recommend jobs and mentors to the users based on the background information they enter.
-##Features
+## Features
 * Salary and Overall Experience Prediction
 * Female worker centered company statistics and reviews. Companies are ranked accordance to these factors. 
 ![1](https://dl2.pushbulletusercontent.com/zG2KxbN5ojNYcrM9PkoKSJ2LEF1fOZMr/Screen%20Shot%202017-02-21%20at%201.51.48%20AM.png)
@@ -12,7 +12,7 @@ It will predict users' overall experiences and salaries at the companies they sp
 * Recommend matching jobs for potential job seekers (In Progress)
 * Match mentors and entry-level employee within the company (In Progress)
 ![1](https://dl2.pushbulletusercontent.com/tvsAZf8ELxZWyajvuHieCPcmCazGA6X7/Screen%20Shot%202017-02-21%20at%201.52.06%20AM.png)
-## Built with
+##Built With
 * MongoDB
 * React/Redux
 * Express
