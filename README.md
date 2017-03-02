@@ -20,5 +20,5 @@ It will predict users' overall experiences and salaries at the companies they sp
 * Node.js
 * HPE Prediction API
 
-## [Live Demo](https://floating-garden-88489.herokuapp.com/)
+## [Live Demo](http://shatter.codecatdesigns.com)
 
